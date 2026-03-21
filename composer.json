@@ -1,0 +1,15 @@
+{
+    "name": "nioteq/starter-theme",
+    "description": "A minimal starter theme for Nioteq CMS — clean, lightweight, and easy to customize.",
+    "type": "nioteq-theme",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        { "name": "Tom Kilimann", "email": "tkilimann@icloud.com" }
+    ],
+    "extra": {
+        "nioteq": {
+            "slug": "starter"
+        }
+    }
+}
