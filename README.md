@@ -1,13 +1,13 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Nioteq_CMS-Theme-d97706?style=for-the-badge" alt="Nioteq CMS Theme">
-  <img src="https://img.shields.io/badge/Version-1.0.0-22c55e?style=for-the-badge" alt="Version 1.0.0">
+  <img src="https://img.shields.io/badge/Version-1.1.0-22c55e?style=for-the-badge" alt="Version 1.1.0">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License">
-  <img src="https://img.shields.io/badge/Dark_Mode-Supported-1e293b?style=for-the-badge" alt="Dark Mode">
+  <img src="https://img.shields.io/badge/Dark_Theme-09090b?style=for-the-badge" alt="Dark Theme">
 </p>
 
 # :art: Starter Theme
 
-A minimal, clean theme for [Nioteq CMS](https://github.com/tklmn/nioteq-cms) with a warm stone/amber color palette. Designed as a lightweight starting point for building custom themes.
+A modern dark theme for [Nioteq CMS](https://github.com/tklmn/nioteq-cms) with warm amber accents on a true-black base. Designed as a lightweight starting point for building custom themes.
 
 ---
 
@@ -15,16 +15,17 @@ A minimal, clean theme for [Nioteq CMS](https://github.com/tklmn/nioteq-cms) wit
 
 | | Feature | Description |
 |---|---|---|
-| :crescent_moon: | **Dark Mode** | Full dark mode support out of the box |
-| :paintbrush: | **Accent Color** | Customizable accent color via theme settings |
+| :new_moon: | **Dark by Default** | True-black base (`#09090b`) with Zinc surface layers |
+| :paintbrush: | **Accent Color** | Customizable accent color — nav hover, links, breadcrumbs |
+| :bubbles: | **Glassmorphism Nav** | Frosted glass navigation with `backdrop-filter` blur |
 | :framed_picture: | **Logo Upload** | Upload a custom logo or display the site name |
 | :label: | **Tagline** | Optional tagline next to the logo |
+| :bread: | **Breadcrumbs** | Integrated into page header with slash separators |
 | :mag: | **Search Toggle** | Show/hide the search icon in navigation |
 | :bust_in_silhouette: | **Profile Toggle** | Show/hide the profile link for logged-in users |
-| :door: | **Logout Toggle** | Show/hide the logout button for logged-in users |
-| :bread: | **Breadcrumbs** | Optional breadcrumb navigation |
 | :iphone: | **Responsive** | Mobile-first with hamburger menu and smooth slide animation |
 | :wheelchair: | **Accessible** | ARIA labels, skip-to-content link, semantic HTML |
+| :pencil2: | **Editable** | Theme files can be edited via the CMS admin theme editor |
 
 ---
 
@@ -55,7 +56,7 @@ Customize in **Backend > Themes > Customize**:
 
 | Setting | Description | Default |
 |---------|-------------|---------|
-| **Accent Color** | Primary accent color for links and active states | `#d97706` (amber) |
+| **Accent Color** | Primary accent color for links, hover, and active states | `#d97706` (amber) |
 
 ### :star2: Branding
 
@@ -63,7 +64,7 @@ Customize in **Backend > Themes > Customize**:
 |---------|-------------|---------|
 | **Logo** | Upload a custom logo image | Site name as text |
 | **Tagline** | Short text next to the logo | `Built with Nioteq CMS` |
-| **Footer Text** | Custom footer text | - |
+| **Footer Text** | Custom footer text | Copyright with year and site name |
 
 ### :jigsaw: Layout
 
@@ -89,11 +90,10 @@ starter-theme/
 ├── theme.json               # Theme manifest with settings schema
 ├── composer.json             # Composer package definition
 └── views/
-    ├── home.blade.php        # Homepage template
-    ├── page.blade.php        # Default page template
+    ├── page.blade.php        # Page template (all pages including home)
     └── layouts/
-        ├── app.blade.php         # Base layout (head, body, scripts)
-        ├── navigation.blade.php  # Navigation bar (desktop + mobile)
+        ├── app.blade.php         # Base layout with CSS custom properties
+        ├── navigation.blade.php  # Glassmorphism navigation (desktop + mobile)
         └── footer.blade.php      # Footer
 ```
 
@@ -101,18 +101,36 @@ starter-theme/
 
 ## :hammer_and_wrench: Customization
 
+### CSS Custom Properties
+
+The theme uses CSS custom properties for easy customization:
+
+```css
+--accent           /* Accent color from theme settings */
+--surface-0        /* Deepest background (#09090b) */
+--surface-1        /* Navigation, header, footer (#111113) */
+--surface-2        /* Cards, code blocks (#18181b) */
+--surface-3        /* Elevated elements (#1f1f23) */
+--border           /* Subtle borders (rgba white 6%) */
+--text-primary     /* Headings, bold (#fafafa) */
+--text-secondary   /* Body text (#a1a1aa) */
+--text-muted       /* Hints, labels (#52525b) */
+```
+
+### CSS Class Hooks
+
+```css
+.s-nav-link        /* Navigation links */
+.s-card            /* Card elements with hover animation */
+.s-header          /* Page header */
+.s-footer          /* Footer */
+.s-icon-btn        /* Icon buttons in navigation */
+.s-breadcrumb      /* Breadcrumb container */
+```
+
 ### Custom CSS
 
 Add custom CSS via **Backend > Themes > Customize > Custom CSS**. Styles are injected after the theme's base styles.
-
-### Available CSS Hooks
-
-```css
-.starter-accent       { /* accent text color */ }
-.starter-accent-bg    { /* accent background */ }
-.starter-accent-border { /* accent border */ }
-.starter-nav a.active { /* active nav link underline */ }
-```
 
 ### Template Support
 
@@ -122,7 +140,7 @@ The theme supports both `container` and `full_width` page templates. Full-width 
 
 ## :page_facing_up: Requirements
 
-- **Nioteq CMS** >= 2.0
+- **Nioteq CMS** >= 2.13
 
 ## :handshake: Author
 

@@ -1,8 +1,8 @@
 {
     "name": "nioteq/starter-theme",
-    "description": "A minimal starter theme for Nioteq CMS — clean, lightweight, and easy to customize.",
+    "description": "A modern dark theme for Nioteq CMS with warm amber accents — clean, lightweight, and easy to customize.",
     "type": "nioteq-theme",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT",
     "authors": [
         { "name": "Tom Kilimann", "email": "tkilimann@icloud.com" }

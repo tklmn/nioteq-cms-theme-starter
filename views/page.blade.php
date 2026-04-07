@@ -11,25 +11,12 @@
         @if ($page->extra_css)<style>{!! \App\Helpers\HtmlHelper::cleanCss($page->extra_css) !!}</style>@endif
     </x-slot>
 
-    <x-slot name="header">
-        <h1 class="text-xl font-semibold text-stone-800 dark:text-gray-200"
-            @if($page->aria_label) aria-label="{{ $page->aria_label }}" @endif>
-            {{ $page->title }}
-        </h1>
-        @if($page->subtitle)
-            <p class="text-sm text-stone-500 dark:text-gray-400">{{ $page->subtitle }}</p>
-        @endif
-    </x-slot>
-
-    @if($page->header_image)
-        <x-slot name="headerImage">{{ $page->header_image }}</x-slot>
-    @endif
-
     @php
         $isFullWidth = ($page->template ?? 'container') === 'full_width';
         $isBlocks = ($page->content_type ?? 'html') === 'blocks' && !empty($page->blocks);
         $isHome = $page->is_root ?? false;
         $showBreadcrumbs = theme('show_breadcrumbs', true) && !$isHome;
+        $showTitle = theme('show_page_title', true);
 
         $ancestors = collect([]);
         if ($showBreadcrumbs) {
@@ -44,22 +31,29 @@
         }
     @endphp
 
-    @if($showBreadcrumbs)
-        <nav aria-label="Breadcrumb" class="mb-6">
-            <ol class="flex items-center space-x-2 text-sm">
-                <li><a href="{{ route('home') }}" class="text-stone-400 hover:text-stone-700 dark:hover:text-white transition-colors"><i class="bi bi-house"></i></a></li>
+    <x-slot name="header">
+        @if($showBreadcrumbs)
+            <div class="s-breadcrumb">
+                <a href="{{ route('home') }}" class="s-no"><i class="bi bi-house-door"></i></a>
                 @foreach($ancestors as $ancestor)
-                    <li class="flex items-center space-x-2">
-                        <i class="bi bi-chevron-right text-stone-300 dark:text-gray-600 text-xs"></i>
-                        <a href="{{ $ancestor->is_root ? route('home') : route('page.show', $ancestor->slug) }}" class="text-stone-400 hover:text-stone-700 dark:hover:text-white transition-colors">{{ $ancestor->nav_title ?? $ancestor->title }}</a>
-                    </li>
+                    <span class="sep">/</span>
+                    <a href="{{ $ancestor->is_root ? route('home') : route('page.show', $ancestor->slug) }}" class="s-no">{{ $ancestor->nav_title ?? $ancestor->title }}</a>
                 @endforeach
-                <li class="flex items-center space-x-2">
-                    <i class="bi bi-chevron-right text-stone-300 dark:text-gray-600 text-xs"></i>
-                    <span class="text-stone-600 dark:text-gray-300 font-medium">{{ $page->nav_title ?? $page->title }}</span>
-                </li>
-            </ol>
-        </nav>
+                <span class="sep">/</span>
+                <span class="current">{{ $page->nav_title ?? $page->title }}</span>
+            </div>
+        @endif
+        <h1 style="font-size:1.5rem;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;"
+            @if($page->aria_label) aria-label="{{ $page->aria_label }}" @endif>
+            {{ $page->title }}
+        </h1>
+        @if($page->subtitle)
+            <p style="color:var(--text-muted);margin-top:0.375rem;">{{ $page->subtitle }}</p>
+        @endif
+    </x-slot>
+
+    @if($page->header_image)
+        <x-slot name="headerImage">{{ $page->header_image }}</x-slot>
     @endif
 
     @if($isBlocks)
@@ -67,24 +61,9 @@
             {!! app(\App\Services\BlockRenderer::class)->render($page->blocks) !!}
         </div>
     @else
-        <div class="prose prose-stone dark:prose-invert max-w-none">
+        <div class="prose max-w-none">
             {!! \App\Helpers\HtmlHelper::clean($page->content) !!}
         </div>
     @endif
 
-    @if(count($page->children->where('is_active', true)->where('hide_in_menu', false)) > 0)
-        <div class="mt-12">
-            <h2 class="text-xl font-bold text-stone-900 dark:text-white mb-4">{{ __('translation.pages.subpages') }}</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                @foreach($page->children->where('is_active', true)->where('hide_in_menu', false) as $childPage)
-                    <a href="{{ $childPage->is_root ? route('home') : route('page.show', $childPage->slug) }}" class="block p-4 rounded-lg border border-stone-200 dark:border-gray-800 hover:border-stone-300 dark:hover:border-gray-700 transition-colors">
-                        <h3 class="font-semibold text-stone-900 dark:text-white">{{ $childPage->nav_title ?? $childPage->title }}</h3>
-                        @if($childPage->meta_description)
-                            <p class="text-sm text-stone-500 dark:text-gray-400 mt-1 line-clamp-2">{{ $childPage->meta_description }}</p>
-                        @endif
-                    </a>
-                @endforeach
-            </div>
-        </div>
-    @endif
 </x-frontend-app-layout>

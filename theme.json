@@ -1,10 +1,12 @@
 {
     "slug": "starter",
     "name": "Starter Theme",
-    "version": "1.0.0",
-    "description": "A minimal, clean theme with a warm color palette. Perfect starting point for custom themes.",
+    "version": "1.1.0",
+    "description": "A minimal dark theme with warm amber accents. Perfect starting point for custom themes.",
     "author": "Tom Kilimann",
+    "screenshot": "assets/screenshot.png",
     "supports_dark_mode": true,
+    "editable": true,
     "settings": {
         "accent_color": {
             "type": "color",

@@ -1,7 +1,7 @@
-<footer class="border-t border-stone-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-    <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-xs text-stone-400 dark:text-gray-500">
-            {{ theme('footer_text', setting('site_name', __('translation.app_name')) . ' — ' . theme('tagline', 'Built with Nioteq CMS')) }}
+<footer class="s-footer">
+    <div class="max-w-6xl mx-auto py-10 px-6 sm:px-8 text-center">
+        <p style="font-size:0.8125rem;color:var(--text-muted);">
+            {{ theme('footer_text', '© ' . date('Y') . ' ' . setting('site_name', __('translation.app_name')) . '. ' . __('All rights reserved.')) }}
         </p>
     </div>
 </footer>
