@@ -10,14 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.2] - 2026-07-08
 
 ### Changed
-- CSP-Kompatibilitaet: Inline-`<script>` (Navigation, Scroll-to-Top) tragen jetzt `@cspNonce`, und die Inline-Event-Handler (Suche, Mobile-Toggle, Hover-Hintergruende) wurden auf `addEventListener` umgestellt. Funktioniert damit unter der strikten, nonce-basierten Content-Security-Policy des CMS.
+- CSP compatibility: inline `<script>` tags (navigation, scroll-to-top) now carry `@cspNonce`, and the inline event handlers (search, mobile toggle, hover backgrounds) were switched to `addEventListener`. This makes it work under the CMS's strict, nonce-based Content Security Policy.
 
 ---
 
 ## [1.1.1] - 2026-07-08
 
 ### Fixed
-- Logout-Button in der Desktop-Navigation: `<@csrf>` → `@csrf`. Die Streuzeichen `<`/`>` um die Blade-Direktive wurden sichtbar gerendert und erzeugten fehlerhaftes Markup rund um das CSRF-Feld.
+- Logout button in the desktop navigation: `<@csrf>` → `@csrf`. The stray characters `<`/`>` around the Blade directive were rendered visibly and produced broken markup around the CSRF field.
 
 ---
 
