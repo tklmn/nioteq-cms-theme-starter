@@ -46,7 +46,7 @@
                         <a href="{{ route('dashboard') }}" class="s-icon-btn s-no" title="{{ __('translation.navigation.dashboard') }}"><i class="bi bi-speedometer2" style="font-size:0.875rem;"></i></a>
                     @endif
                     @if(theme('show_logout', true))
-                        <form method="POST" action="{{ route('logout') }}" class="inline-flex"><@csrf><button type="submit" class="s-icon-btn" title="{{ __('translation.logout') }}"><i class="bi bi-box-arrow-right" style="font-size:0.875rem;"></i></button></form>
+                        <form method="POST" action="{{ route('logout') }}" class="inline-flex">@csrf<button type="submit" class="s-icon-btn" title="{{ __('translation.logout') }}"><i class="bi bi-box-arrow-right" style="font-size:0.875rem;"></i></button></form>
                     @endif
                 @endauth
             </div>

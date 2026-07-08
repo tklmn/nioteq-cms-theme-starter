@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] - 2026-07-08
+
+### Fixed
+- Logout-Button in der Desktop-Navigation: `<@csrf>` → `@csrf`. Die Streuzeichen `<`/`>` um die Blade-Direktive wurden sichtbar gerendert und erzeugten fehlerhaftes Markup rund um das CSRF-Feld.
+
+---
+
 ## [1.1.0] - 2026-04-07
 
 ### Changed
