@@ -36,7 +36,7 @@
                 <div style="width:1px;height:1.25rem;background:var(--border);margin:0 0.5rem;"></div>
 
                 @if(theme('show_search', true))
-                    <button type="button" onclick="toggleSearchOverlay()" class="s-icon-btn" title="{{ __('translation.search') }}"><i class="bi bi-search" style="font-size:0.875rem;"></i></button>
+                    <button type="button" data-starter-search class="s-icon-btn" title="{{ __('translation.search') }}"><i class="bi bi-search" style="font-size:0.875rem;"></i></button>
                 @endif
                 @auth
                     @if(theme('show_profile', true))
@@ -52,7 +52,7 @@
             </div>
 
             {{-- Mobile toggle --}}
-            <button id="starter-nav-toggle" onclick="starterNavToggle()" class="md:hidden nav-hamburger s-icon-btn" aria-expanded="false" aria-controls="starter-mobile-menu" aria-label="Toggle navigation">
+            <button type="button" id="starter-nav-toggle" class="md:hidden nav-hamburger s-icon-btn" aria-expanded="false" aria-controls="starter-mobile-menu" aria-label="Toggle navigation">
                 <span class="nav-hamburger-line"></span>
                 <span class="nav-hamburger-line"></span>
                 <span class="nav-hamburger-line"></span>
@@ -70,7 +70,7 @@
                         $mLinkUrl = $mIsExternal ? $page->external_url : ($page->is_root ? route('home') : route('page.show', $page->slug));
                     @endphp
                     <a href="{{ $mLinkUrl }}" class="s-no block px-3 py-2.5 rounded-lg text-sm" style="color:var(--text-secondary);transition:background 0.15s;"
-                       onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='transparent'"
+                       data-hover-bg="rgba(255,255,255,0.04)"
                        @if($mIsExternal && $page->external_url_new_window) target="_blank" @endif>
                         {{ $page->nav_title ?: $page->title }}
                     </a>
@@ -103,6 +103,16 @@
     </div>
 </nav>
 
-<script>
+<script @cspNonce>
 function starterNavToggle(){var m=document.getElementById('starter-mobile-menu'),b=document.getElementById('starter-nav-toggle'),o=m.classList.contains('is-open');m.classList.toggle('is-open',!o);m.setAttribute('aria-hidden',o?'true':'false');b.classList.toggle('is-active',!o);b.setAttribute('aria-expanded',!o?'true':'false');}
+document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('starter-nav-toggle');
+    if (toggle) toggle.addEventListener('click', starterNavToggle);
+    var search = document.querySelector('[data-starter-search]');
+    if (search) search.addEventListener('click', function () { toggleSearchOverlay(); });
+    document.querySelectorAll('[data-hover-bg]').forEach(function (el) {
+        el.addEventListener('mouseover', function () { el.style.background = el.getAttribute('data-hover-bg'); });
+        el.addEventListener('mouseout', function () { el.style.background = 'transparent'; });
+    });
+});
 </script>

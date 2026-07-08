@@ -118,7 +118,7 @@
         <button class="s-scroll-top" id="scroll-to-top" aria-label="{{ __('Scroll to top') }}">
             <i class="bi bi-chevron-up"></i>
         </button>
-        <script>
+        <script @cspNonce>
         (function(){
             var b=document.getElementById('scroll-to-top');
             window.addEventListener('scroll',function(){b.classList.toggle('visible',window.scrollY>300)});
