@@ -1,0 +1,31 @@
+# Security Policy
+
+This package is the **Starter Theme** for
+[Nioteq CMS](https://github.com/tklmn/nioteq-cms). It is a front-end theme
+(Blade views + assets) rendered by the CMS and inherits the host's security
+controls (nonce-based CSP, CSRF, security headers).
+
+## Supported Versions
+
+Security fixes are released for the latest minor version line. Upgrade to the
+latest release rather than expecting back-ported patches.
+
+| Version | Supported |
+|---------|-----------|
+| 1.1.x   | ✅ |
+| < 1.1   | ❌ |
+
+## Reporting a Vulnerability
+
+**Please do not open a public issue for security vulnerabilities.**
+
+Report privately via GitHub's coordinated disclosure workflow: the repository's
+**Security** tab → **Report a vulnerability**. Include the affected version, impact,
+reproduction steps, and any suggested fix. Expect an acknowledgement within
+**5 business days**; please allow a reasonable window for a patch before public
+disclosure.
+
+## Supply Chain / SBOM
+
+This package has **no third-party runtime dependencies**. A CycloneDX Software Bill
+of Materials is published under [`sbom/`](sbom/).
