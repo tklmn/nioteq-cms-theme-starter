@@ -14,7 +14,7 @@
         @endisset
 
         <link rel="stylesheet" href="{{ asset('css/bootstrap-icons.css') }}">
-        @vite(['resources/scss/frontend/app.scss', 'resources/js/frontend/app.js'])
+        @vite(['resources/css/frontend/app.css', 'resources/js/frontend/app.js'])
 
         <style>
             :root {
@@ -47,6 +47,8 @@
             .s-nav-link.active::after { content: ''; position: absolute; bottom: -0.9375rem; left: 0.75rem; right: 0.75rem; height: 2px; background: var(--accent); border-radius: 1px; }
             .s-icon-btn { width: 2.25rem; height: 2.25rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 0.5rem; color: var(--text-muted); transition: color 0.15s, background 0.15s; text-decoration: none; }
             .s-icon-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.06); }
+            /* Menue-Knopf nur mobil: .s-icon-btn (ohne Ebene) wuerde md:hidden sonst schlagen */
+            @media (min-width: 48rem) { .nav-hamburger { display: none; } }
             .nav-mobile-panel { background: var(--surface-1) !important; }
 
             /* ── Header ───────────────────────────────────────── */

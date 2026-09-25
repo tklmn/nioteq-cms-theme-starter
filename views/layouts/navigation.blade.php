@@ -52,7 +52,7 @@
             </div>
 
             {{-- Mobile toggle --}}
-            <button type="button" id="starter-nav-toggle" class="md:hidden nav-hamburger s-icon-btn" aria-expanded="false" aria-controls="starter-mobile-menu" aria-label="Toggle navigation">
+            <button type="button" id="starter-nav-toggle" class="md:hidden nav-hamburger s-icon-btn" aria-expanded="false" aria-controls="starter-mobile-menu" aria-label="{{ __('translation.frontend.toggle_navigation') }}">
                 <span class="nav-hamburger-line"></span>
                 <span class="nav-hamburger-line"></span>
                 <span class="nav-hamburger-line"></span>

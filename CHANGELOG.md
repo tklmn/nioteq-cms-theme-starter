@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.0] - 2026-09-25
+
+### Changed
+- **Breaking:** the layout now loads the core's Tailwind v4 frontend stylesheet (`resources/css/frontend/app.css`) instead of `resources/scss/frontend/app.scss`. The CMS removed its SCSS pipeline, so with 1.x every page returned a 500 ("Unable to locate file in Vite manifest"). Requires a Nioteq CMS release with the Tailwind v4 frontend; for older versions stay on 1.x.
+
+### Fixed
+- The mobile menu button no longer shows on desktop: the unlayered `.s-icon-btn` rule overrode Tailwind's `md:hidden`.
+- The menu button's `aria-label` is now translatable (`translation.frontend.toggle_navigation`) instead of the hard-coded English "Toggle navigation".
+
+---
+
 ## [1.1.3] - 2026-07-10
 
 ### Added

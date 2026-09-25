@@ -140,7 +140,7 @@ The theme supports both `container` and `full_width` page templates. Full-width 
 
 ## :page_facing_up: Requirements
 
-- **Nioteq CMS** >= 2.13
+- **Nioteq CMS** with the Tailwind v4 frontend stylesheet (`resources/css/frontend/app.css`) — the release after 2.23.3. For older versions (SCSS frontend) use starter theme 1.x.
 
 ## :handshake: Author
 
